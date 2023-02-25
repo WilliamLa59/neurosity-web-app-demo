@@ -11,19 +11,19 @@ I've omitted the server and this is essentially just a refactored version of the
         npm install
 
 2) Run the application
-    
 
         npm start
         
-    
 The app will run off port: [3000](http://localhost:3000/) 
-
+<br>
+<br>
 ### How to Use:
 1) Click the "Simulate Values" button to start a reading session
 2) Click it again to end the reading session
 3) Fill out the first and last name fields and click the "Log" button
 4) Click either of the download buttons to view the dummy data in csv format
 
+*The entire 'session' JSON object can also be viewed in the console*
 
 ## Formats 
 *More info can be found [Here](https://docs.neurosity.co/docs/api/brainwaves)*
@@ -129,4 +129,66 @@ A new reading a taken every 62.5ms by the Crown and this demo version is configu
           
 
  ### PowerByBand
+ The PowerByBand data are the average power values per channel in sets of 8 in the following frequencies: <br>
+ 'Alpha', 'Beta', 'Delta', 'Gamma', 'Theta'<br>
+ The Crown pushes out a new set of every 250ms.
  
+         The static PowerByBand Data used = {
+            label: 'powerByBand',
+            data: {
+              alpha: [
+                0.4326838933650053,
+                0.7011913998347046,
+                1.3717684682104212,
+                0.4043711439234614,
+                0.4276277910286375,
+                0.7343967679911133,
+                0.4643529443786634,
+                0.5012185195340365
+              ],
+              beta: [
+                1.0473270376446968,
+                0.6565360935142369,
+                0.9905849734272257,
+                0.4167252084581245,
+                0.5812834985846604,
+                0.9092642713573444,
+                0.9963075404421067,
+                1.0495665446734443
+              ],
+              delta: [
+                0.46131690566460004,
+                1.0030278320362798,
+                0.8563781797682917,
+                0.2911634678359473,
+                0.5829804845703581,
+                0.6714666592936025,
+                0.37730719195446316,
+                1.0851178080710937
+              ],
+              gamma: [
+                0.22648773160183822,
+                0.2171827127990081,
+                0.2626969784220435,
+                0.16349594919353772,
+                0.17327387900192714,
+                0.18990085940799623,
+                0.22908540295491436,
+                0.2537584109981627
+              ],
+              theta: [
+                0.6434504807739541,
+                0.936240328507981,
+                0.8679595766147628,
+                0.23662065697316603,
+                0.6048174207817718,
+                0.816112075629094,
+                0.3367745804938397,
+                1.1043745310136739
+              ]
+            }
+            
+## Discrepancies
+Because the raw values update at a faster rate than PowerByBand, there will be duplicate values during the difference in time it takes to retreive new data from the crown. Since this addition wasn't the main focus of the project it remains somewhat unfinished. 
+<br>
+Since theres only one set of dummy data this demo version won't be able to display the difference in time it takes for the Crown to update each data format.
