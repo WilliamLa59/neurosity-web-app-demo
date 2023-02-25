@@ -202,22 +202,28 @@ export function Calm() {
 
   useEffect(() => {
     if(testState === true){
-      const interval = setInterval(
-        // set number every 1s
+      const interval1 = setInterval(
+        // set number every 62.5ms
         () => {
           setCalm(Math.floor(Math.random() * (100 - 1)+1)); 
           setFocus(Math.floor(Math.random() * (100 - 1)+1));
           setBrainWaves(data);
-          setBrainWaves2(data2);
+          
         },
         62.5
       );
+      const interval2 = setInterval(
+        setBrainWaves2(data2), 250
+      );
       return () => {
-        clearInterval(interval);
+        clearInterval(interval1);
+        clearInterval(interval2);
       };
 
     }
-  }, [testState, data, data2]);
+  }, [testState]);
+
+
 
 
   //name input state object
